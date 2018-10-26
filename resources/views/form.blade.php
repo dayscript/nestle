@@ -77,25 +77,22 @@
             </div>
         </div> -->
 
-
-
-
-        {{ Form::open(array('url' => '/admin')) }}
+        {{ Form::open(array('url' => '/')) }}
         @if (session('message'))
             <div class="alert alert-danger">
                 {{ session('message') }}
             </div>
         @endif
             <div class="form-group">
-              <label class="text-white">Numero de Visita</label>
-              <select></select>
-              {{ Form::text('nit', null, array('placeholder' => 'NIT', 'class' => 'form-control form-control-sm mt-3 col-xl-6 col-md-12 col-sm-12' )) }}
+              <label class="text-white">Cumple con ventas</label>
+              {{ Form::select('size', array('si' => 'SI', 'no' => 'no')) }}
             </div>
             <div class="form-group">
               {{ Form::button( 'Buscar', array('type' => 'submit', 'class' => 'btn btn-primary mt-3' )) }}
             </div>
         {{ Form::close() }}
     </div>
+
 @stop
 
 @section('javascript')

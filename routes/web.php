@@ -1,4 +1,7 @@
 <?php
+use App\User;
+use App\Store;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +27,13 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/store/download', 'StoreController@export')->name('store.download');
 Route::get('/store/import', 'StoreController@import')->name('store.import');
 Route::post('/store/import', 'StoreController@insert')->name('store.insert');
+
+
+Route::post('/admin', function(){
+	$user = Store::where('nit', '=', Input::get('nit'))->first();
+	if ($user === null) {
+	    return Redirect::to('/')->with('message', 'Usuario no registrado en la base de datos');
+	}else{
+	return view('form');
+	}
+});

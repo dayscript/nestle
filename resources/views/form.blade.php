@@ -85,10 +85,19 @@
         @endif
             <div class="form-group">
               <label class="text-white">Cumple con ventas</label>
+              {{ Form::select('size', array('si' => 'SI', 'no' => 'NO')) }}
+
+
+              <label class="text-white">Inflatables Nescafe</label>
+              {{ Form::checkbox('name', 'value') }}
+
+
+
+              <label class="text-white">Inflatables Maggi</label>
               {{ Form::select('size', array('si' => 'SI', 'no' => 'no')) }}
             </div>
             <div class="form-group">
-              {{ Form::button( 'Buscar', array('type' => 'submit', 'class' => 'btn btn-primary mt-3' )) }}
+              {{ Form::button( 'Siguiente', array('type' => 'submit', 'class' => 'btn btn-primary mt-3' )) }}
             </div>
         {{ Form::close() }}
     </div>

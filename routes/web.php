@@ -24,12 +24,16 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+//STORE
 Route::get('/store/download', 'StoreController@export')->name('store.download');
 Route::get('/store/import', 'StoreController@import')->name('store.import');
 Route::post('/store/import', 'StoreController@insert')->name('store.insert');
 
-
-Route::post('/admin', function(){
+//VISITAS
+Route::get('/visitas', function () {
+    return view('visitas');
+});
+Route::post('/visitas', function(){
 	$user = Store::where('nit', '=', Input::get('nit'))->first();
 	if ($user === null) {
 	    return Redirect::to('/')->with('message', 'Usuario no registrado en la base de datos');

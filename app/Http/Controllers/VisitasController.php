@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Visitas;
 use Illuminate\Http\Request;
+use App\Store;
+use DB;
 
 class VisitasController extends Controller
 {
@@ -81,5 +83,13 @@ class VisitasController extends Controller
     public function destroy(Visitas $visitas)
     {
         //
+    }
+    public function visitaStore(Request $request)
+    {
+        //$visitasDos = DB::table('stores')->pluck('n_visita');
+        //$visitas = Store::where('n_visita')->get();
+        //dd($visitasDos);
+        //return View('visitas', $visitasDos);
+        return View('visitas');
     }
 }

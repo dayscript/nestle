@@ -29,9 +29,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <hr>
                             <div class="panel-body">
                                 <div class="form-group" id="inflatablesNescafe">
+                                    <hr>
                                     <h4 class="text-white">Inflatables Nescafe</h4>
                                     <div class="checkbox">
                                         <div class="form-group">
@@ -77,9 +77,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <div class="panel-body">
                                 <div class="form-group" id="inflatablesMaggi">
+                                    <hr>
                                     <h4 class="text-white">Inflatables Maggi</h4>
                                     <div class="checkbox">
                                         <div class="form-group">

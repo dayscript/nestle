@@ -30,12 +30,19 @@ Route::get('/store/import', 'StoreController@import')->name('store.import');
 Route::post('/store/import', 'StoreController@insert')->name('store.insert');
 
 //VISITAS
-Route::get('/visitas', function () {
+Route::get('/visitas', 'VisitasController@visitaStore')->name('visitas.visitas');
+/*Route::get('/visitas', function () {
     return view('visitas');
-});
+});*/
 Route::post('/visitas', function(){
-	$user = Store::where('nit', '=', Input::get('nit'))->first();
-	if ($user === null) {
+//	$visita = Store::where('n_visita', '=', Input::get('visita'))->first();	
+//	if ($visita === null) {
+		# code...
+//	}
+	$nit = Store::where('nit', '=', Input::get('nit'))->first();
+	//dd($nit);
+	$visita = Store::where('n_visita', '=', Input::get('visita'))->first();
+	if ($nit === null || $visita === null ) {
 	    return Redirect::to('/')->with('message', 'Usuario no registrado en la base de datos');
 	}else{
 	return view('form');

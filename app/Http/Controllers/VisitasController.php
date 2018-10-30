@@ -6,6 +6,7 @@ use App\Visitas;
 use Illuminate\Http\Request;
 use App\Store;
 use DB;
+use Session;
 
 class VisitasController extends Controller
 {
@@ -90,6 +91,9 @@ class VisitasController extends Controller
         //$visitas = Store::where('n_visita')->get();
         //dd($visitasDos);
         //return View('visitas', $visitasDos);
-        return View('visitas');
+        $id = Session::get('nit-id');
+        $nit = Store::find($id);
+        return view('visitas')->with('nit', $nit);
+        //return View('visitas');
     }
 }

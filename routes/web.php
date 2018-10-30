@@ -45,6 +45,8 @@ Route::post('/visitas', function(){
 	if ($nit === null || $visita === null ) {
 	    return Redirect::to('/')->with('message', 'Usuario no registrado en la base de datos');
 	}else{
-	return view('form');
+		Session::put('nit-id', $nit->id);
+		return view('form')->with('nit', $nit);
+	//return view('form');
 	}
 });

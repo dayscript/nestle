@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Visitas;
-use Request;
+use App\Home;
+use Illuminate\Http\Request;
 use App\Store;
-use DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use Session;
 
-class VisitasController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +19,20 @@ class VisitasController extends Controller
 
     public function index()
     {
-        return view('visitas');
+        return view('home');
     }
 
-    public function postVisitas()
+    public function postHome(Home $home)
     {
-        return Request::all();
+        $nit = Store::where('nit', '=', Input::get('nit'))->first();
+        $visita = Store::where('n_visita', '=', Input::get('visita'))->first();
+        if ($nit === null || $visita === null ) {
+            return Redirect::to('/home')->with('message', 'Usuario no registrado en la base de datos');
+        }else{
+            Session::put('nit-id', $nit->id);
+            return view('visitas')->with('nit', $nit);
+        //return view('form');
+        }
     }
 
     /**
@@ -50,10 +59,10 @@ class VisitasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Visitas  $visitas
+     * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show(Visitas $visitas)
+    public function show(Home $home)
     {
         //
     }
@@ -61,10 +70,10 @@ class VisitasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Visitas  $visitas
+     * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Visitas $visitas)
+    public function edit(Home $home)
     {
         //
     }
@@ -73,10 +82,10 @@ class VisitasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Visitas  $visitas
+     * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Visitas $visitas)
+    public function update(Request $request, Home $home)
     {
         //
     }
@@ -84,22 +93,11 @@ class VisitasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Visitas  $visitas
+     * @param  \App\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Visitas $visitas)
+    public function destroy(Home $home)
     {
         //
-    }
-    public function visitaStore(Request $request)
-    {
-        //$visitasDos = DB::table('stores')->pluck('n_visita');
-        //$visitas = Store::where('n_visita')->get();
-        //dd($visitasDos);
-        //return View('visitas', $visitasDos);
-        $id = Session::get('nit-id');
-        $nit = Store::find($id);
-        return view('visitas')->with('nit', $nit);
-        //return View('visitas');
     }
 }

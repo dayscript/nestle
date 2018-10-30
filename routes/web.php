@@ -24,16 +24,22 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+//HOME
+Route::get('/home', 'HomeController@index');
+Route::post('/home', 'HomeController@postHome');
+
+//VISITAS
+Route::get('/visitas', 'VisitasController@index')->name('visitas');
+Route::post('/visitas', 'VisitasController@postVisitas');
+
 //STORE
 Route::get('/store/download', 'StoreController@export')->name('store.download');
 Route::get('/store/import', 'StoreController@import')->name('store.import');
 Route::post('/store/import', 'StoreController@insert')->name('store.insert');
 
-//VISITAS
-Route::get('/visitas', 'VisitasController@visitaStore')->name('visitas.visitas');
 /*Route::get('/visitas', function () {
     return view('visitas');
-});*/
+});
 Route::post('/visitas', function(){
 //	$visita = Store::where('n_visita', '=', Input::get('visita'))->first();	
 //	if ($visita === null) {
@@ -43,10 +49,11 @@ Route::post('/visitas', function(){
 	//dd($nit);
 	$visita = Store::where('n_visita', '=', Input::get('visita'))->first();
 	if ($nit === null || $visita === null ) {
-	    return Redirect::to('/')->with('message', 'Usuario no registrado en la base de datos');
+	    return Redirect::to('/visitas')->with('message', 'Usuario no registrado en la base de datos');
 	}else{
 		Session::put('nit-id', $nit->id);
 		return view('form')->with('nit', $nit);
 	//return view('form');
 	}
 });
+*/

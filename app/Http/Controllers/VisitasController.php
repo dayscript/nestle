@@ -24,23 +24,23 @@ class VisitasController extends Controller
     public function postVisitas(Request $request)
     {
         //Infaltables Nescafe
-        $request->file('imgNescafe1')->storeAs('public/visitas', $request->nit.'-Nescafe1.jpg');
-        $request->file('imgNescafe2')->storeAs('public/visitas', $request->nit.'-Nescafe2.jpg');
-        $request->file('imgNescafe3')->storeAs('public/visitas', $request->nit.'-Nescafe3.jpg');
-        $request->file('imgNescafe4')->storeAs('public/visitas', $request->nit.'-Nescafe4.jpg');
-        $request->file('imgNescafe5')->storeAs('public/visitas', $request->nit.'-Nescafe5.jpg');
+        $request->file('imgNescafe1')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe1.jpg');
+        $request->file('imgNescafe2')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe2.jpg');
+        $request->file('imgNescafe3')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe3.jpg');
+        $request->file('imgNescafe4')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe4.jpg');
+        $request->file('imgNescafe5')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe5.jpg');
         //Infaltables Maggi
-        $request->file('imgMaggi1')->storeAs('public/visitas', $request->nit.'-Maggi1.jpg');
-        $request->file('imgMaggi2')->storeAs('public/visitas', $request->nit.'-Maggi2.jpg');
-        $request->file('imgMaggi3')->storeAs('public/visitas', $request->nit.'-Maggi3.jpg');
-        $request->file('imgMaggi4')->storeAs('public/visitas', $request->nit.'-Maggi4.jpg');
-        $request->file('imgMaggi5')->storeAs('public/visitas', $request->nit.'-Maggi5.jpg');
-        $request->file('imgMaggi6')->storeAs('public/visitas', $request->nit.'-Maggi6.jpg');
-        $request->file('imgMaggi7')->storeAs('public/visitas', $request->nit.'-Maggi7.jpg');
+        $request->file('imgMaggi1')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi1.jpg');
+        $request->file('imgMaggi2')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi2.jpg');
+        $request->file('imgMaggi3')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi3.jpg');
+        $request->file('imgMaggi4')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi4.jpg');
+        $request->file('imgMaggi5')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi5.jpg');
+        $request->file('imgMaggi6')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi6.jpg');
+        $request->file('imgMaggi7')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi7.jpg');
 
         $visita = Visitas::create([
-            'nombre_cliente' => $request->nombre_cliente,
             'nit' => $request->nit,
+            'nombre_cliente' => $request->nombre_cliente,
             'razon_social' => $request->razon_social,
             'n_visita' => $request->n_visita,
             'ventas' => $request->ventas,
@@ -56,18 +56,19 @@ class VisitasController extends Controller
             'inflatablesMaggi5' => $request->inflatablesMaggi5,
             'inflatablesMaggi6' => $request->inflatablesMaggi6,
             'inflatablesMaggi7' => $request->inflatablesMaggi7,
-            'imgNescafe1' => 'storage/visitas/'.$request->nit.'-Nescafe1.jpg',
-            'imgNescafe2' => 'storage/visitas/'.$request->nit.'-Nescafe2.jpg',
-            'imgNescafe3' => 'storage/visitas/'.$request->nit.'-Nescafe3.jpg',
-            'imgNescafe4' => 'storage/visitas/'.$request->nit.'-Nescafe4.jpg',
-            'imgNescafe5' => 'storage/visitas/'.$request->nit.'-Nescafe5.jpg',
-            'imgMaggi1' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi2' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi3' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi4' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi5' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi6' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi7' => 'storage/visitas/'.$request->nit.'-Maggi1.jpg',
+            'imgNescafe1' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe1.jpg',
+            'imgNescafe2' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe2.jpg',
+            'imgNescafe3' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe3.jpg',
+            'imgNescafe4' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe4.jpg',
+            'imgNescafe5' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe5.jpg',
+            'imgMaggi1' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi1.jpg',
+            'imgMaggi2' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi2.jpg',
+            'imgMaggi3' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi3.jpg',
+            'imgMaggi4' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi4.jpg',
+            'imgMaggi5' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi5.jpg',
+            'imgMaggi6' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi6.jpg',
+            'imgMaggi7' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi7.jpg',
+            'observaciones' => $request->ventas,
         ]);
 
         return redirect('home')->with('success', 'Visita registrada con exito.');

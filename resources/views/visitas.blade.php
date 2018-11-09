@@ -156,6 +156,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-9" for="imageInput">Observaciones</label>
+                                    <textarea rows="4" cols="54" name="observaciones" style="resize:none,"></textarea>
+                                </div>
+<!--                                 <div class="form-group">
+                                    <label for="date">Fecha</label>
+                                    <input type="text" class="form-control datepicker" name="date">
+                                </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

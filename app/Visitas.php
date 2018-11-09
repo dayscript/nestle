@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Visitas extends Model
 {
         protected $fillable = [
-        	'nombre_cliente',
         	'nit',
+            'nombre_cliente',
         	'razon_social',
         	'n_visita',
         	'ventas',
@@ -36,5 +36,6 @@ class Visitas extends Model
         	'imgMaggi5',
         	'imgMaggi6',
         	'imgMaggi7', 
+            'observaciones', 
     ];
 }

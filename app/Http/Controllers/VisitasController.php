@@ -23,7 +23,8 @@ class VisitasController extends Controller
 
     public function postVisitas(Request $request)
     {
-        //Infaltables Nescafe
+        dd($request);
+/*        //Infaltables Nescafe
         $request->file('imgNescafe1')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe1.jpg');
         $request->file('imgNescafe2')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe2.jpg');
         $request->file('imgNescafe3')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe3.jpg');
@@ -71,7 +72,7 @@ class VisitasController extends Controller
             'observaciones' => $request->ventas,
         ]);
 
-        return redirect('home')->with('success', 'Visita registrada con exito.');
+        return redirect('home')->with('success', 'Visita registrada con exito.');*/
     }
 
     /**

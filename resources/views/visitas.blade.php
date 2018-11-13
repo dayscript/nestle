@@ -1,176 +1,193 @@
 @extends('voyager::master')
 @section('content')
     <div class="container">
-        <div class="col-md-12">
-            @if (\Session::has('success'))
-            <div class="alert alert-success">
-                <ul>
-                    <li>{!! \Session::get('success') !!}</li>
-                </ul>
-            </div>
-            @endif
-            <div class="panel-heading"></div>
-            {{ Form::open(array('url' => '/visitas', 'files'=> true)) }}
+        @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+        @endif
+        {{ Form::open(array('url' => '/visitas', 'files'=> true)) }}
             @if (session('message'))
             <div class="alert alert-danger">
                 {{ session('message') }}
             </div>
             @endif
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-bordered">
-                        <div class="panel-body">
-                            <div class="panel-body">
-                                {{ $nit->nombre_cliente }} 
-                                {{ $nit->nit }} 
-                                {{ $nit->razon_social }} 
-                                <div class="form-group">
-                                    <input type="hidden" name="nombre_cliente" id="nombre_cliente" class="form-control" value="{{ $nit->nombre_cliente }}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="nit" id="nit" class="form-control" value="{{ $nit->nit }}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="razon_social" id="razon_social" class="form-control" value="{{ $nit->razon_social }}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="n_visita" id="n_visita" class="form-control" value="{{ $nit->n_visita }}">
-                                </div>
-                                <div class="form-group">
-                                    <h4 class="text-white">Cumple con ventas</h4>
-                                    <select name="ventas" id="ventas">
-                                        <option value="1">SI</option>
-                                        <option value="0">NO</option>
-                                    </select>
-                                </div>
+        <div class="panel panel-bordered">
+            <div class="panel-body">
+                <div id="datosBasicos">
+                    <h4 class="text-white">Datos Básicos</h4>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="ciudad">Ciudad</label>
+                          <input type="text" name="ciudad" class="form-control" id="ciudad" value="{{ $nit->ciudad }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="fecha_visita">Fecha Visita</label>
+                          <input type="date" name="fecha_visita" class="form-control" id="fecha_visita" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="punto_venta">Nombre del Punto de Venta</label>
+                          <input type="text" name="punto_venta" class="form-control" id="punto_venta" value="{{ $nit->razon_social }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="nombre_tendero">Nombre del Tendero</label>
+                          <input type="text" name="nombre_tendero" class="form-control" id="nombre_tendero" value="{{ $nit->nombre_cliente }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="nombre_visitador">Nombre del Visitador</label>
+                          <input type="text" name="nombre_visitador" class="form-control" id="nombre_visitador">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="barrio">Barrio</label>
+                          <input type="text" name="barrio" class="form-control" id="barrio" value="{{ $nit->barrio }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="direccion">Direccion</label>
+                          <input type="text" name="direccion" class="form-control" id="direccion" value="{{ $nit->direccion }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="celular">Numero de Teléfono o Celular</label>
+                          <input type="text" name="celular" class="form-control" id="celular" value="{{ $nit->telefono }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="numero_visita">Numero de Visita</label>
+                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="nit">Nit</label>
+                          <input type="text" name="nit" class="form-control" id="nit" value="{{ $nit->nit }}">
+                        </div>
+                    </div>
+                </div>
+                <div id="ventas">
+                    <h4>Cumple con ventas</h4>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <select name="ventas" id="ventas" class="form-control">
+                                <option value="1">SI</option>
+                                <option value="0">NO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="infaltables">
+                    <h4>Productos Infaltables</h4>
+                    <div class="row">
+                        <div class="col-sm-6" id="inflatablesNescafe">
+                            <label for="nescafe">Nescafe</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesNescafe1" name="inflatablesNescafe1">
+                              <label class="form-check-label" for="inflatablesNescafe1">Nescafe Tradicion dawn jar 12*170g</label>
                             </div>
-                            <div class="panel-body">
-                                <div class="form-group" id="inflatablesNescafe">
-                                    <hr>
-                                    <h4 class="text-white">Inflatables Nescafe</h4>
-                                    <div class="checkbox">
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesNescafe1" value="1">Nescafe Tradicion
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgNescafe1" type="file" id="imgNescafe1">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesNescafe2" value="1">Nescafe Tradicion
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgNescafe2" type="file" id="imgNescafe2">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesNescafe3" value="1">Nescafe Tradicion
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgNescafe3" type="file" id="imgNescafe3">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesNescafe4" value="1">2 Referencias Nescafe Dolca
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgNescafe4" type="file" id="imgNescafe4">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesNescafe5" value="1">Nescafe Cafe con Leche
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgNescafe5" type="file" id="imgNescafe5">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesNescafe2" name="inflatablesNescafe2">
+                              <label class="form-check-label" for="inflatablesNescafe2">Nescafe Tradicion dawn jar 24*50g</label>
                             </div>
-                            <div class="panel-body">
-                                <div class="form-group" id="inflatablesMaggi">
-                                    <hr>
-                                    <h4 class="text-white">Inflatables Maggi</h4>
-                                    <div class="checkbox">
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi1" value="1">Uno
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi1" type="file" id="imgMaggi1">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi2" value="1">Dos
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi2" type="file" id="imgMaggi2">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi3" value="1">Tres
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi3" type="file" id="imgMaggi3">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi4" value="1">Cuatro
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi4" type="file" id="imgMaggi4">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi5" value="1">Cinco
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi5" type="file" id="imgMaggi5">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi6" value="1">Seis
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi6" type="file" id="imgMaggi6">
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline col-sm-3">
-                                                <input type="checkbox" name="inflatablesMaggi7" value="1">Siete
-                                            </label>
-                                            <label class="col-sm-9" for="imageInput">Cargar Imagen
-                                                <input name="imgMaggi7" type="file" id="imgMaggi7">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesNescafe3" name="inflatablesNescafe3">
+                              <label class="form-check-label" for="inflatablesNescafe3">Nescafe Tradicion dawn jar 18*85g</label>
                             </div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label class="col-sm-9" for="imageInput">Observaciones</label>
-                                    <textarea rows="4" cols="54" name="observaciones" style="resize:none,"></textarea>
-                                </div>
-<!--                                 <div class="form-group">
-                                    <label for="date">Fecha</label>
-                                    <input type="text" class="form-control datepicker" name="date">
-                                </div> -->
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesNescafe4" name="inflatablesNescafe4">
+                              <label class="form-check-label" for="inflatablesNescafe4">Dos de las tres referencias de Nescafe Dolca frasco</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesNescafe5" name="inflatablesNescafe5">
+                              <label class="form-check-label" for="inflatablesNescafe5">Nescafe café con leche bolsa de 12*200g</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="todosNescafe" name="todosNescafe">
+                              <label class="form-check-label" for="todosNescafe">Seleccionar todos</label>
+                            </div>                            
+                        </div>
+                        <div class="col-sm-6" id="inflatablesMaggi">
+                            <label for="maggi">Maggi</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi1" name="inflatablesMaggi1">
+                              <label class="form-check-label" for="inflatablesMaggi1">Maggi en cubo *8 o 12</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi2" name="inflatablesMaggi2">
+                              <label class="form-check-label" for="inflatablesMaggi2">Maggi desmenuzado gallina</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi3" name="inflatablesMaggi3">
+                              <label class="form-check-label" for="inflatablesMaggi3">Maggi desmenuzado costilla</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi4" name="inflatablesMaggi4">
+                              <label class="form-check-label" for="inflatablesMaggi4">Base de bolognesa mas otra base</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi5" name="inflatablesMaggi5">
+                              <label class="form-check-label" for="inflatablesMaggi5">Maggi jugoso al sarten cualquier formato</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi6" name="inflatablesMaggi6">
+                              <label class="form-check-label" for="inflatablesMaggi6">Maggi sopas claras cualquier formato</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="inflatablesMaggi7" name="inflatablesMaggi7">
+                              <label class="form-check-label" for="inflatablesMaggi7">Maggi crema gourmet pollo 24*76 g</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="1" id="todosMaggi" name="todosMaggi">
+                              <label class="form-check-label" for="todosMaggi">Seleccionar todos</label>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="Caras">
+                    <h4>Caras de Exhibicion Inicial</h4>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <select name="caras_e_nescafe" id="caras_e_nescafe" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select name="caras_e_maggi" id="caras_e_maggi" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-9" for="imageInput">Observaciones</label>
+                            <textarea rows="4" cols="54" name="observaciones" style="resize:none,"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {{ Form::button( 'Siguiente', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
         </div>
+        {{ Form::button( 'Siguiente', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
     </div>
 @endsection

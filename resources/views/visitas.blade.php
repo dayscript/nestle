@@ -58,14 +58,14 @@
                           <input type="text" name="celular" class="form-control" id="celular" value="{{ $nit->telefono }}">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row hidden">
                         <div class="form-group col-md-6">
                           <label for="numero_visita">Numero de Visita</label>
-                          <input type="hidden" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
+                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="nit">Nit</label>
-                          <input type="hidden" name="nit" class="form-control" id="nit" value="{{ $nit->nit }}">
+                          <input type="text" name="nit" class="form-control" id="nit" value="{{ $nit->nit }}">
                         </div>
                     </div>
                 </div>

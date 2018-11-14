@@ -11,8 +11,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/icon-nestle.png') }}" type="image/x-icon">
 
-
-
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
 

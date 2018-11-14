@@ -23,27 +23,18 @@ class VisitasController extends Controller
 
     public function postVisitas(Request $request)
     {
-        dd($request);
-/*        //Infaltables Nescafe
-        $request->file('imgNescafe1')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe1.jpg');
-        $request->file('imgNescafe2')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe2.jpg');
-        $request->file('imgNescafe3')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe3.jpg');
-        $request->file('imgNescafe4')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe4.jpg');
-        $request->file('imgNescafe5')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Nescafe5.jpg');
-        //Infaltables Maggi
-        $request->file('imgMaggi1')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi1.jpg');
-        $request->file('imgMaggi2')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi2.jpg');
-        $request->file('imgMaggi3')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi3.jpg');
-        $request->file('imgMaggi4')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi4.jpg');
-        $request->file('imgMaggi5')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi5.jpg');
-        $request->file('imgMaggi6')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi6.jpg');
-        $request->file('imgMaggi7')->storeAs('public/visitas', $request->n_visita.'-'.$request->nit.'-Maggi7.jpg');
-
+        $request->file('images')->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, $request->images->getClientOriginalName());
         $visita = Visitas::create([
+            'ciudad' => $request->ciudad,
+            'fecha_visita' => $request->fecha_visita,
+            'punto_venta' => $request->punto_venta,
+            'nombre_tendero' => $request->nombre_tendero,
+            'nombre_visitador' => $request->nombre_visitador,
+            'barrio' => $request->barrio,
+            'direccion' => $request->direccion,
+            'celular' => $request->celular,
+            'numero_visita' => $request->numero_visita,
             'nit' => $request->nit,
-            'nombre_cliente' => $request->nombre_cliente,
-            'razon_social' => $request->razon_social,
-            'n_visita' => $request->n_visita,
             'ventas' => $request->ventas,
             'inflatablesNescafe1' => $request->inflatablesNescafe1,
             'inflatablesNescafe2' => $request->inflatablesNescafe2,
@@ -57,22 +48,15 @@ class VisitasController extends Controller
             'inflatablesMaggi5' => $request->inflatablesMaggi5,
             'inflatablesMaggi6' => $request->inflatablesMaggi6,
             'inflatablesMaggi7' => $request->inflatablesMaggi7,
-            'imgNescafe1' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe1.jpg',
-            'imgNescafe2' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe2.jpg',
-            'imgNescafe3' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe3.jpg',
-            'imgNescafe4' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe4.jpg',
-            'imgNescafe5' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Nescafe5.jpg',
-            'imgMaggi1' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi1.jpg',
-            'imgMaggi2' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi2.jpg',
-            'imgMaggi3' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi3.jpg',
-            'imgMaggi4' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi4.jpg',
-            'imgMaggi5' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi5.jpg',
-            'imgMaggi6' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi6.jpg',
-            'imgMaggi7' => 'storage/visitas/'$request->n_visita.'-'.$request->nit.'-Maggi7.jpg',
-            'observaciones' => $request->ventas,
+            'caras_ex_nescafe' => $request->caras_ex_nescafe,
+            'caras_ex_maggi' => $request->caras_ex_maggi,
+            'caras_ad_nescafe' => $request->caras_ad_nescafe,
+            'caras_ad_maggi' => $request->caras_ad_maggi,
+            'stickers' => $request->stickers,
+            'images' => 'storage/visitas/'.$request->images->getClientOriginalName(),
+            'observaciones' => $request->observaciones,
         ]);
-
-        return redirect('home')->with('success', 'Visita registrada con exito.');*/
+        return redirect('home')->with('success', 'Visita registrada con exito.');
     }
 
     /**
@@ -142,13 +126,8 @@ class VisitasController extends Controller
     }
     public function visitaStore(Request $request)
     {
-        //$visitasDos = DB::table('stores')->pluck('n_visita');
-        //$visitas = Store::where('n_visita')->get();
-        //dd($visitasDos);
-        //return View('visitas', $visitasDos);
         $id = Session::get('nit-id');
         $nit = Store::find($id);
         return view('visitas')->with('nit', $nit);
-        //return View('visitas');
     }
 }

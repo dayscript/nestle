@@ -21,21 +21,21 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                           <label for="ciudad">Ciudad</label>
-                          <input type="text" name="ciudad" class="form-control" id="ciudad" value="{{ $nit->ciudad }}">
+                          <input type="text" name="ciudad" class="form-control" id="ciudad" value="{{ $nit->ciudad }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="fecha_visita">Fecha Visita</label>
-                          <input type="date" name="fecha_visita" class="form-control" id="fecha_visita" />
+                          <input type="date" name="fecha_visita" class="form-control" id="fecha_visita">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                           <label for="punto_venta">Nombre del Punto de Venta</label>
-                          <input type="text" name="punto_venta" class="form-control" id="punto_venta" value="{{ $nit->razon_social }}">
+                          <input type="text" name="punto_venta" class="form-control" id="punto_venta" value="{{ $nit->razon_social }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="nombre_tendero">Nombre del Tendero</label>
-                          <input type="text" name="nombre_tendero" class="form-control" id="nombre_tendero" value="{{ $nit->nombre_cliente }}">
+                          <input type="text" name="nombre_tendero" class="form-control" id="nombre_tendero" value="{{ $nit->nombre_cliente }}" readonly>
                         </div>
                     </div>
                     <div class="row">
@@ -61,11 +61,11 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                           <label for="numero_visita">Numero de Visita</label>
-                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
+                          <input type="hidden" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="nit">Nit</label>
-                          <input type="text" name="nit" class="form-control" id="nit" value="{{ $nit->nit }}">
+                          <input type="hidden" name="nit" class="form-control" id="nit" value="{{ $nit->nit }}">
                         </div>
                     </div>
                 </div>
@@ -151,40 +151,93 @@
                     <h4>Caras de Exhibicion Inicial</h4>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <select name="caras_e_nescafe" id="caras_e_nescafe" class="form-control">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
+                          <label for="caras_ex_nescafe">Caras de Exhibicion Nescafe</label>
+                          <select name="caras_ex_nescafe" id="caras_ex_nescafe" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                          </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <select name="caras_e_maggi" id="caras_e_maggi" class="form-control">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
+                          <label for="caras_ex_maggi">Caras de Exhibicion Maggi</label>
+                          <select name="caras_ex_maggi" id="caras_ex_maggi" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                          </select>
                         </div>
                     </div>
-
-
-
-
+                    <h4>Caras Adicionales de Nescafe y Maggi</h4>
                     <div class="row">
-                        <div class="form-group">
-                            <label class="col-sm-9" for="imageInput">Observaciones</label>
-                            <textarea rows="4" cols="54" name="observaciones" style="resize:none,"></textarea>
+                        <div class="form-group col-md-6">
+                          <label for="caras_ad_nescafe">Caras de Exhibicion Nescafe</label>
+                          <select name="caras_ad_nescafe" id="caras_ad_nescafe" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="caras_ad_maggi">Caras de Exhibicion Maggi</label>
+                          <select name="caras_ad_maggi" id="caras_ad_maggi" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                          </select>
                         </div>
                     </div>
+                    <h4>Total de Stickers Ganados</h4>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                          <label for="stickers">Stickers Ganados</label>
+                          <select name="stickers" id="stickers" class="form-control">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="images">
+                  <h4>Imágenes</h4>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="images">Subir Imágenes</label>
+                      <input type="file" class="form-control" name="images" placeholder="address" multiple>
+                    </div>
+                  </div>
+                </div>
+                <div id="observaciones">
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="observaciones">Observaciones</label>
+                      <textarea rows="4" cols="54" name="observaciones" style="resize:none,"></textarea>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

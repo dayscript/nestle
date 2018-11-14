@@ -153,6 +153,7 @@
                         <div class="form-group col-md-6">
                           <label for="caras_ex_nescafe">Caras de Exhibicion Nescafe</label>
                           <select name="caras_ex_nescafe" id="caras_ex_nescafe" class="form-control">
+                              <option value="0">0</option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>
@@ -166,6 +167,7 @@
                         <div class="form-group col-md-6">
                           <label for="caras_ex_maggi">Caras de Exhibicion Maggi</label>
                           <select name="caras_ex_maggi" id="caras_ex_maggi" class="form-control">
+                              <option value="0">0</option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>
@@ -182,6 +184,7 @@
                         <div class="form-group col-md-6">
                           <label for="caras_ad_nescafe">Caras de Exhibicion Nescafe</label>
                           <select name="caras_ad_nescafe" id="caras_ad_nescafe" class="form-control">
+                              <option value="0">0</option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>
@@ -195,6 +198,7 @@
                         <div class="form-group col-md-6">
                           <label for="caras_ad_maggi">Caras de Exhibicion Maggi</label>
                           <select name="caras_ad_maggi" id="caras_ad_maggi" class="form-control">
+                              <option value="0">0</option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>

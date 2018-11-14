@@ -211,6 +211,7 @@
                         <div class="form-group col-md-6">
                           <label for="stickers">Stickers Ganados</label>
                           <select name="stickers" id="stickers" class="form-control">
+                              <option value="0">0</option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>

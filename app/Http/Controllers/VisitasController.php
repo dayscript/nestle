@@ -23,7 +23,10 @@ class VisitasController extends Controller
 
     public function postVisitas(Request $request)
     {
-        $request->file('images')->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, $request->images->getClientOriginalName());
+        foreach ($request->images as $key => $value) {
+            
+            $value->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, $value->getClientOriginalName());
+        }
         $visita = Visitas::create([
             'ciudad' => $request->ciudad,
             'fecha_visita' => $request->fecha_visita,
@@ -53,7 +56,7 @@ class VisitasController extends Controller
             'caras_ad_nescafe' => $request->caras_ad_nescafe,
             'caras_ad_maggi' => $request->caras_ad_maggi,
             'stickers' => $request->stickers,
-            'images' => 'storage/visitas/'.$request->images->getClientOriginalName(),
+            'images' => 'storage/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit,
             'observaciones' => $request->observaciones,
         ]);
         return redirect('home')->with('success', 'Visita registrada con exito.');

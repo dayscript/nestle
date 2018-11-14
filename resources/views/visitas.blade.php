@@ -232,7 +232,7 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="images">Subir Imágenes</label>
-                      <input type="file" class="form-control" name="images" placeholder="address" multiple required>
+                      <input type="file" class="form-control" name="images[]" placeholder="address" multiple required>
                     </div>
                   </div>
                 </div>

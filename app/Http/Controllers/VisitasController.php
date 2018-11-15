@@ -57,6 +57,7 @@ class VisitasController extends Controller
             'caras_ad_maggi' => $request->caras_ad_maggi,
             'stickers' => $request->stickers,
             'images' => 'storage/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit,
+            'ganador' => $request->ganador,
             'observaciones' => $request->observaciones,
         ]);
         return redirect('home')->with('success', 'Visita registrada con exito.');

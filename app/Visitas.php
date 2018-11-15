@@ -36,6 +36,7 @@ class Visitas extends Model
             'caras_ad_maggi',
             'stickers',
             'images',
+            'ganador',
             'observaciones', 
     ];
 }

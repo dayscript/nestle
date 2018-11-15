@@ -236,6 +236,23 @@
                     </div>
                   </div>
                 </div>
+                <div id="win">
+                  <h4>El pdv es ganador</h4>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ganador" id="gridRadios1" value="1">
+                          <label class="form-check-label" for="gridRadios1">Si</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ganador" id="gridRadios2" value="0">
+                          <label class="form-check-label" for="gridRadios2">No</label>
+                        </div>
+                    </div>
+                  </div>
+                  <fieldset class="form-group">
+                  </fieldset>
+                </div>
                 <div id="observaciones">
                   <div class="row">
                     <div class="form-group col-md-6">

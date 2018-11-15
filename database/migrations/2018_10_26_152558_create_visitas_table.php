@@ -44,6 +44,7 @@ class CreateVisitasTable extends Migration
             $table->string('caras_ad_maggi')->nullable();
             $table->string('stickers')->nullable();
             $table->string('images')->nullable();
+            $table->boolean('ganador')->nullable();
             $table->string('observaciones')->nullable();
             $table->timestamps();
         });

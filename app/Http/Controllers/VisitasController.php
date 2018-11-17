@@ -22,11 +22,15 @@ class VisitasController extends Controller
     }
 
     public function postVisitas(Request $request)
-    {
+    {   
+        $name = '';
         foreach ($request->images as $key => $value) {
-            
             $value->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, $value->getClientOriginalName());
+            $name .=  $value->getClientOriginalName().'|';
+            //$name .=  'public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit.$value->getClientOriginalName().'|';
         }
+            //dd($name);
+        //dd($request->images[0]->getClientOriginalName());
         $visita = Visitas::create([
             'ciudad' => $request->ciudad,
             'fecha_visita' => $request->fecha_visita,
@@ -56,7 +60,7 @@ class VisitasController extends Controller
             'caras_ad_nescafe' => $request->caras_ad_nescafe,
             'caras_ad_maggi' => $request->caras_ad_maggi,
             'stickers' => $request->stickers,
-            'images' => 'storage/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit,
+            'images' => $name,
             'ganador' => $request->ganador,
             'observaciones' => $request->observaciones,
         ]);

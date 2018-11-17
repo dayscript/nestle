@@ -32,6 +32,10 @@ Route::post('/home', 'HomeController@postHome');
 Route::get('/visitas', 'VisitasController@index')->name('visitas');
 Route::post('/visitas', 'VisitasController@postVisitas');
 
+//CONSULTAR
+Route::get('/consultar', 'ConsultarController@index');
+Route::post('/consultar', 'ConsultarController@postConsultar');
+
 //STORE
 Route::get('/store/download', 'StoreController@export')->name('store.download');
 Route::get('/store/import', 'StoreController@import')->name('store.import');

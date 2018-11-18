@@ -25,12 +25,9 @@ class VisitasController extends Controller
     {   
         $name = '';
         foreach ($request->images as $key => $value) {
-            $value->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, $value->getClientOriginalName());
-            $name .=  $value->getClientOriginalName().'|';
-            //$name .=  'public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit.$value->getClientOriginalName().'|';
+            $value->storeAs('public/visitas/'.'visita-'.$request->numero_visita.'/'.$request->nit, 'img-'.$key.'.jpg');
+            $name .=  '|'.$key;
         }
-            //dd($name);
-        //dd($request->images[0]->getClientOriginalName());
         $visita = Visitas::create([
             'ciudad' => $request->ciudad,
             'fecha_visita' => $request->fecha_visita,

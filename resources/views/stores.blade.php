@@ -225,7 +225,17 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="images">Ruta Imágenes</label>
-                      <p>{{ $nit->images }}</p>
+                      <?php
+                        $route = explode('|', $nit->images);
+                        foreach ($route as $key => $value): ?>
+                          @if($value == '')
+
+                          @else
+                          <div class="list-group">
+                            <a href="{{ 'storage/visitas/'.'visita-'.$nit->numero_visita.'/'.$nit->nit.'/'.'img-'.$value.'.jpg' }}" target="_blank" >{{ 'img-'.$value.'.jpg' }}</a>
+                          </div>
+                          @endif
+                      <?php endforeach; ?>
                     </div>
                   </div>
                 </div>

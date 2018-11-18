@@ -102,14 +102,8 @@ class StoreController extends Controller
         $request->validate([
             'csv_file' => 'required',
         ]);
-
-        //$fileName = time().'.'.request()->csv_file->getClientOriginalExtension();
-        //$path = request()->csv_file->move('files', $fileName);
-
         Excel::import(new StoresImport, request()->file('csv_file'));
-
         return  back()
         ->with('success','Carga exitosa.');
-
     }
 }

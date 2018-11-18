@@ -93,7 +93,6 @@ class ConsultarController extends Controller
         if ($nit === null) {
             return Redirect::to('/consultar')->with('message', 'Usuario no tiene registrada ninguna visita');
         }else{
-        //Session::put('nit-id', $nit->id);
         return view('stores')->with('nit', $nit);
         }
     }

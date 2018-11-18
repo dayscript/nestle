@@ -31,7 +31,6 @@ class HomeController extends Controller
         }else{
             Session::put('nit-id', $nit->id);
             return view('visitas')->with('nit', $nit);
-        //return view('form');
         }
     }
 

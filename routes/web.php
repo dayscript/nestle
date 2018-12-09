@@ -19,7 +19,6 @@ Route::get('/', function () {
     //return view('vendor.voyager.login');
 });
 
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

@@ -39,4 +39,14 @@ class Visitas extends Model
             'ganador',
             'observaciones', 
     ];
+
+    public function store(){
+      return $this->hasOne('App\Store', 'nit');
+    }
+
+    public function scopeNit($query, $nit){
+        if ($nit) {
+            return $query->where('nit', 'LIKE', "%$nit%");
+        }
+    }
 }

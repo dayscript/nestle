@@ -16,9 +16,13 @@ class VisitasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('visitas');
+        $nit = $request->get('nit');
+        $visitas = Visitas::orderBy('numero_visita', 'DESC')
+        ->nit($nit)
+        ->paginate(15);
+        return view('consultar', compact('visitas'));
     }
 
     public function postVisitas(Request $request)
@@ -91,9 +95,11 @@ class VisitasController extends Controller
      * @param  \App\Visitas  $visitas
      * @return \Illuminate\Http\Response
      */
-    public function show(Visitas $visitas)
+    public function show(Visitas $visitas, $id)
     {
-        //
+        $visita = Visitas::find($id);
+        return View('visitas.show')
+            ->with('visita', $visita);
     }
 
     /**
@@ -102,9 +108,11 @@ class VisitasController extends Controller
      * @param  \App\Visitas  $visitas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Visitas $visitas)
+    public function edit(Visitas $visitas, $id)
     {
-        //
+        $visita = Visitas::find($id);
+        return View('visitas.edit')
+            ->with('visita', $visita);
     }
 
     /**

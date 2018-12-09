@@ -15,9 +15,12 @@ class ConsultarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('consultar');
+    public function index(Request $request){
+        $nit = $request->get('nit');
+        $visitas = Visitas::orderBy('numero_visita', 'DESC')
+        ->nit($nit)
+        ->paginate(15);
+        return view('consultar', compact('visitas'));
     }
 
     /**
@@ -60,7 +63,10 @@ class ConsultarController extends Controller
      */
     public function edit(Consultar $consultar)
     {
-        //
+        dd('sadasd');
+/*        $nerd = Visitas::find($id);
+        return View::make('consultar.edit')
+            ->with('nerd', $nerd);*/
     }
 
     /**

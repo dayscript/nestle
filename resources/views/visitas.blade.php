@@ -263,6 +263,6 @@
                 </div>
             </div>
         </div>
-        {{ Form::button( 'Siguiente', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
+        {{ Form::button( 'Guardar Visita', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
     </div>
 @endsection

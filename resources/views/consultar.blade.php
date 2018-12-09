@@ -9,29 +9,36 @@
             </ul>
         </div>
         @endif
-        <div class="panel-heading">Consultar</div>
-        {{ Form::open(array('url' => '/consultar')) }}
-        @if (session('message'))
-        <div class="alert alert-danger">
-            {{ session('message') }}
-        </div>
-        @endif
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-bordered">
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="text-white">Numero de NIT</label>
-                            {{ Form::text('nit', null, array('placeholder' => 'NIT', 'class' => 'form-control form-control-sm mt-3 col-xl-6 col-md-12 col-sm-12' )) }}
-                        </div>
-                        <div class="form-group">
-                            {{ Form::button( 'Buscar', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h1>Consultar visitas</h1>
+        {{ Form::open(['route' => 'consultar.index', 'method' => 'GET', 'class' => 'form-inline' ]) }}
+        {{ Form::text('nit', null, array('placeholder' => 'NIT', 'class' => 'form-control' )) }}
+        {{ Form::button( 'Buscar', array('type' => 'submit', 'class' => 'btn btn-danger mt-3' )) }}
         {{ Form::close() }}
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nit</th>
+            <th class="hidden-xs">Ciudad</th>
+            <th>Visita N°</th>
+            <th class="hidden-xs">Fecha Visita</th>
+            <th>Ver Visita</th>
+        </tr>
+        @foreach ($visitas as $visita)
+                            
+            <tr>
+                <td>{{ $visita->id }}</th>
+                <td>{{ $visita->nit }}</td>
+                <td class="hidden-xs">{{ $visita->ciudad }}</td>
+                <td>{{ $visita->numero_visita }}</td>
+                <td class="hidden-xs">{{ $visita->fecha_visita }}</td>
+                <td><a href="/visitas/{{ $visita->id }}"><span class="label label-info">Ver</span></a></td>
+            </tr>
+
+        @endforeach
+    </table>
+    {{ $visitas->render() }}
+
     </div>
 </div>
 @endsection

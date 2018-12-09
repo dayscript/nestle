@@ -31,6 +31,8 @@ Route::post('/home', 'HomeController@postHome');
 //VISITAS
 Route::get('/visitas', 'VisitasController@index')->name('visitas');
 Route::post('/visitas', 'VisitasController@postVisitas');
+Route::get('/visitas/{id}','VisitasController@show');
+Route::get('/visitas/{id}/edit','VisitasController@edit');
 
 //CONSULTAR
 Route::get('/consultar', 'ConsultarController@index');
@@ -40,6 +42,9 @@ Route::post('/consultar', 'ConsultarController@postConsultar');
 Route::get('/store/download', 'StoreController@export')->name('store.download');
 Route::get('/store/import', 'StoreController@import')->name('store.import');
 Route::post('/store/import', 'StoreController@insert')->name('store.insert');
+
+Route::resource('consultar','ConsultarController');
+//Route::resource('visitas','VisitasController');
 
 /*Route::get('/visitas', function () {
     return view('visitas');

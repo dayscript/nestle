@@ -61,7 +61,7 @@
                     <div class="row hidden">
                         <div class="form-group col-md-6">
                           <label for="numero_visita">Numero de Visita</label>
-                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="{{ $nit->n_visita }}">
+                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="4">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="nit">Nit</label>

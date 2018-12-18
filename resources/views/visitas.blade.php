@@ -58,10 +58,17 @@
                           <input type="text" name="celular" class="form-control" id="celular" value="{{ $nit->telefono }}">
                         </div>
                     </div>
-                    <div class="row hidden">
+                    <div class="row">
                         <div class="form-group col-md-6">
                           <label for="numero_visita">Numero de Visita</label>
-                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="4">
+                          <select name="numero_visita" id="numero_visita" class="form-control">
+                              <option value="1">Visita 1</option>
+                              <option value="2">Visita 2</option>
+                              <option value="3" selected>Visita 3</option>
+                              <option value="4">Visita 4</option>
+                          </select>
+<!--                           <label for="numero_visita">Numero de Visita</label>
+                          <input type="text" name="numero_visita" class="form-control" id="numero_visita" value="3"> -->
                         </div>
                         <div class="form-group col-md-6">
                           <label for="nit">Nit</label>
